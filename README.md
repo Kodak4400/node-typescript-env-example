@@ -1,13 +1,15 @@
 # Node.js + TypeScript Environment Example
-Node.js + TypeScriptで開発する時の初期設定や手順（使用するライブラリ等）を以下にメモしておく。
+
+Node.js + TypeScript で開発する時の初期設定や手順（使用するライブラリ等）を以下にメモしておく。
 なお、設定といっても必ずしも以下設定にする必要はなく、あくまで参考情報として利用すること。
 
 ## 導入ライブラリ
+
 いくつか種類があるため、種類にわけて記載する。
 
 ```
 # TypeScript
-yarn add --dev typescript ts-node @types/node@<Nodeのバージョン> jest @types/jest
+yarn add --dev typescript ts-node @types/node@<Nodeのバージョン> jest @types/jest ts-jest
 ```
 
 ```
@@ -21,6 +23,11 @@ yarn add --dev prettier eslint-config-prettier
 ```
 
 ```
+# WebPack
+yarn add --dev webpack webpack-cli webpack-node-externals ts-loader
+```
+
+```
 # Pre-Commit Hook
 yarn add --dev mrm lint-staged
 ```
@@ -31,7 +38,9 @@ yarn add --dev yarn-run-all rimraf
 ```
 
 ## 設定（TypeScript）
+
 `npx tsc --init`を実行する。
+
 ```
 // tsconfig.json
 {
@@ -49,8 +58,8 @@ yarn add --dev yarn-run-all rimraf
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "__tests__/**/*.ts",
-    "__tests__/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
     "src/components/wrapper.js"
   ]
 }
@@ -69,6 +78,7 @@ module.exports = {
 ```
 
 ## 設定（ESLint）
+
 ```
 // .eslintrc.js
 module.exports = {
@@ -98,9 +108,9 @@ module.exports = {
 };
 ```
 
-ESLintの推奨設定（eslint:recommended）：　https://eslint.org/docs/rules/
-TypeScript用プラグイン（型を必要としない基本ルールセット）（@typescript-eslint/recommended）
-TypeScript用プラグイン（型を必要とする基本ルールセット）（@typescript-eslint/recommended-requiring-type-checking）
+ESLint の推奨設定（eslint:recommended）：　https://eslint.org/docs/rules/
+TypeScript 用プラグイン（型を必要としない基本ルールセット）（@typescript-eslint/recommended）
+TypeScript 用プラグイン（型を必要とする基本ルールセット）（@typescript-eslint/recommended-requiring-type-checking）
 
 ```
 // tsconfig.eslint.json
@@ -119,6 +129,7 @@ TypeScript用プラグイン（型を必要とする基本ルールセット）�
 ```
 
 ## 設定（Prettier）
+
 ```
 // .prettierignore
 # Ignore artifacts:
@@ -162,6 +173,7 @@ tsconfig.eslint.json
 ```
 
 ## 設定（Pre-Commit Hook）
+
 ```
 // package.json
 {

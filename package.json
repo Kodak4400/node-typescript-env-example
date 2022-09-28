@@ -13,27 +13,31 @@
     "webpack": "webpack --mode development",
     "build": "yarn clean && yarn webpack",
     "check-types": "tsc --noEmit",
-    "eslint": "eslint src/**/*.ts",
-    "eslint:fix": "eslint src/**/*.ts --fix",
-    "format": "prettier --write 'src/**/*.{js,ts,json}'",
-    "lint": "yarn-run-all eslint check-types",
-    "lint:fix": "yarn-run-all eslint:fix check-types format",
+    "eslint": "eslint src/**/*.{js,ts}",
+    "eslint:fix": "eslint --fix src/**/*.{js,ts}",
+    "format": "prettier --write --loglevel=warn 'src/**/*.{js,ts,json}'",
+    "fix": "npm run --silent format; npm run --silent eslint:fix",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "npx simple-git-hooks || :"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
-    "@types/node": "14",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
+    "@types/node": "16",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "aws-sdk-client-mock": "^0.5.5",
-    "eslint": "^7.27.0",
+    "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1",
     "jest": "^27.0.3",
     "lint-staged": "^11.0.0",
-    "mrm": "^3.0.2",
-    "prettier": "^2.3.0",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.0",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.0.0",
@@ -42,19 +46,21 @@
     "webpack-cli": "^4.9.1",
     "webpack-node-externals": "^3.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": "eslint --cache --fix",
-    "*.ts": "tsc --noEmit",
-    "*.{js,ts,json}": "prettier --write"
-  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.38.0",
     "@aws-sdk/signature-v4-crt": "^3.38.0",
     "aws-crt": "^1.10.2"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "prettier --write --loglevel=warn",
+      "eslint --fix --quiet"
+    ],
+    "src/**/*.{json}": [
+      "prettier --write --loglevel=error"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   }
 }

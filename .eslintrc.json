@@ -1,0 +1,30 @@
+{
+  "env": {
+    "node": true,
+    "es2022": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "standard-with-typescript",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"],
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": [
+      "error",
+      {
+        "allowNullableObject": true
+      }
+    ]
+  },
+  "overrides": [],
+  "settings": {}
+}

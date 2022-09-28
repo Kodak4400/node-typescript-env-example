@@ -34,7 +34,7 @@ yarn add --dev mrm lint-staged
 
 ```
 # その他
-yarn add --dev yarn-run-all rimraf
+yarn add --dev rimraf
 ```
 
 ## 設定（TypeScript）

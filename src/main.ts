@@ -1,11 +1,11 @@
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { sub } from './sub';
 
-function hello(name: string): void {
+function hello(name: string) {
   console.log(`Hello, ${name}!`);
 }
 
-export async function main(): Promise<string | Error> {
+export async function main() {
   hello('test');
   sub();
 

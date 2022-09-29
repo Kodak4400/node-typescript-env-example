@@ -1,3 +1,3 @@
-export function sub() {
-  console.log('sub function')
+export function sub(): void {
+  console.log('sub function');
 }

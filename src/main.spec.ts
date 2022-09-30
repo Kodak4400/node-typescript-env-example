@@ -39,7 +39,9 @@ describe('S3のオブジェクトを取得できる', () => {
         $metadata: {
           httpStatusCode: 400,
         },
-        Body: fs.createReadStream(path.resolve(__dirname, './example.txt')),
+        Body: fs.createReadStream(
+          path.resolve(__dirname, './main.test.s3read.txt')
+        ),
       });
     const result = await main();
     expect(result).toBe('ng');

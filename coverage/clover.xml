@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1664430518571" clover="3.2.0">
-  <project timestamp="1664430518571" name="All files">
+<coverage generated="1664503599887" clover="3.2.0">
+  <project timestamp="1664503599887" name="All files">
     <metrics statements="16" coveredstatements="16" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3" elements="22" coveredelements="22" complexity="0" loc="16" ncloc="16" packages="1" files="2" classes="2"/>
     <file name="main.ts" path="/Users/toda/00_work/99_etc/node-typescript-env-example/src/main.ts">
       <metrics statements="14" coveredstatements="14" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
